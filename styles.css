@@ -11,7 +11,7 @@ body {
     background: #0a0a0a url('ruta-de-tu-imagen-de-fondo.jpg') no-repeat center center fixed;
     background-size: cover;
     overflow-x: hidden;
-    width: 100vw; /* Limita al ancho del viewport */
+    width: 100vw;
 }
 
 /* Navegación */
@@ -28,7 +28,7 @@ body {
     z-index: 1000;
     box-shadow: 0 4px 20px rgba(0,0,0,0.6);
     backdrop-filter: blur(10px);
-    max-width: 100vw; /* No exceder el viewport */
+    max-width: 100vw;
 }
 
 .logo { 
@@ -78,7 +78,7 @@ body {
     display: none; 
     font-size: 1.5em;
     cursor: pointer; 
-    margin-left: auto; /* Asegura visibilidad */
+    margin-left: auto;
 }
 
 /* Hero con Parallax Slider */
@@ -90,7 +90,7 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
-    width: 100%; /* Limitado al viewport */
+    width: 100%;
 }
 
 .parallax-slider { 
@@ -164,7 +164,7 @@ body {
     color: white; 
     z-index: 1; 
     text-shadow: 0 4px 10px rgba(0,0,0,0.7); 
-    padding: 0 15px; /* Espacio interno para móviles */
+    padding: 0 15px;
 }
 
 .hero-content h1 { 
@@ -238,7 +238,7 @@ body {
     text-align: center; 
     background: rgba(10, 10, 10, 0.85); 
     position: relative; 
-    width: 100%; /* Limitado al viewport */
+    width: 100%;
 }
 
 .section h2 { 
@@ -274,7 +274,7 @@ h2:hover .spin-icon {
     max-width: 1000px;
     margin: 30px auto;
     justify-content: center;
-    padding: 0 15px; /* Espacio interno para móviles */
+    padding: 0 15px;
 }
 
 .skills-list {
@@ -380,7 +380,7 @@ h2:hover .spin-icon {
     padding: 40px 20px;
     text-align: center;
     background: rgba(0, 0, 0, 0.7);
-    width: 100%; /* Limitado al viewport */
+    width: 100%;
 }
 
 .quote {
@@ -404,9 +404,9 @@ h2:hover .spin-icon {
     position: relative; 
     max-width: 1000px;
     margin: 0 auto; 
-    overflow: visible;
-    padding: 0 60px;
-    width: 100%; /* Limitado al viewport */
+    padding: 0 60px; /* Espacio para botones */
+    width: 100%; 
+    overflow: hidden; /* Evita desbordamiento horizontal */
 }
 
 .carousel-track { 
@@ -414,12 +414,13 @@ h2:hover .spin-icon {
     transition: transform 0.5s ease; 
     position: relative; 
     z-index: 1; 
-    width: calc(100% - 120px); /* Ajustado para no desbordar */
-    margin: 0 auto; 
+    width: 100%; /* Ajustado al contenedor padre */
+    overflow: hidden; /* Refuerza contención */
 }
 
 .carousel-item { 
-    min-width: 300px;
+    flex: 0 0 300px; /* Ancho fijo inicial, pero flexible */
+    max-width: 300px; /* Límite máximo */
     background: rgba(255,255,255,0.1); 
     padding: 15px;
     margin: 10px 5px; 
@@ -427,7 +428,6 @@ h2:hover .spin-icon {
     box-shadow: 0 5px 20px rgba(0,0,0,0.3); 
     text-align: center; 
     transition: transform 0.3s, box-shadow 0.3s; 
-    flex-shrink: 0; 
     z-index: 1; 
 }
 
@@ -546,7 +546,7 @@ h2:hover .spin-icon {
     display: flex; 
     flex-direction: column; 
     gap: 15px;
-    padding: 0 15px; /* Espacio interno para móviles */
+    padding: 0 15px;
 }
 
 #contact-form input, #contact-form textarea { 
@@ -557,7 +557,7 @@ h2:hover .spin-icon {
     background: #1a1a1a; 
     color: #fff; 
     transition: border-color 0.3s, box-shadow 0.3s; 
-    width: 100%; /* Ajustado al contenedor */
+    width: 100%;
 }
 
 #contact-form input:focus, #contact-form textarea:focus { 
@@ -656,7 +656,7 @@ h2:hover .spin-icon {
     height: 100%; 
     background: rgba(0,0,0,0.9); 
     z-index: 2000; 
-    overflow-y: auto; /* Permitir scroll vertical si es necesario */
+    overflow-y: auto;
 }
 
 .modal-content { 
@@ -738,7 +738,7 @@ h2:hover .spin-icon {
 /* Responsividad */
 @media (max-width: 768px) {
     body {
-        overflow-x: hidden; /* Reforzado */
+        overflow-x: hidden;
     }
 
     .navbar { 
@@ -755,7 +755,7 @@ h2:hover .spin-icon {
         background: rgba(10, 10, 10, 0.9); 
         padding: 15px;
         z-index: 1000;
-        overflow-x: hidden; /* Evita desplazamiento lateral */
+        overflow-x: hidden;
     }
 
     .nav-links.active { 
@@ -779,15 +779,19 @@ h2:hover .spin-icon {
     }
 
     .video-carousel { 
-        padding: 0 50px;
+        padding: 0 40px; /* Reducido para móviles */
+        overflow: hidden; /* Refuerza contención */
     }
 
     .carousel-track {
-        width: calc(100% - 100px);
+        width: 100%; /* Ajustado al contenedor */
+        overflow: hidden; /* Evita desbordamiento */
     }
 
     .carousel-item { 
-        min-width: 250px;
+        flex: 0 0 calc(80% - 10px); /* Ancho relativo al viewport menos márgenes */
+        max-width: calc(80% - 10px); /* Limita al 80% del contenedor */
+        margin: 10px 5px; /* Mantener márgenes pequeños */
     }
 
     .carousel-prev { 

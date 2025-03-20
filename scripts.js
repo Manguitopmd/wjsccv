@@ -80,8 +80,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const prevBtn = document.querySelector(prevBtnSelector);
         const nextBtn = document.querySelector(nextBtnSelector);
         const items = track.querySelectorAll('.carousel-item');
-        const itemWidth = items[0].offsetWidth + 10; // Ancho del ítem + margen
         const totalItems = items.length;
+
+        // Calcular ancho dinámico según el viewport
+        const updateItemWidth = () => {
+            const item = items[0];
+            return window.innerWidth <= 768 ? item.offsetWidth + 10 : 310; // 300px + 10px margen en escritorio, dinámico en móvil
+        };
+        let itemWidth = updateItemWidth();
 
         // Clonar ítems para el bucle infinito
         const cloneCount = Math.ceil(window.innerWidth / itemWidth) + 1;
@@ -136,6 +142,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 isAnimating = false;
             }, 500);
+        });
+
+        // Actualizar ancho al redimensionar
+        window.addEventListener('resize', () => {
+            itemWidth = updateItemWidth();
         });
     }
 
