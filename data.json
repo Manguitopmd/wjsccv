@@ -1,0 +1,64 @@
+{
+    "portfolio": [
+        {
+            "title": "Sis Web - Restaurante 2025",
+            "description": "Desarrollo de un sistema integral de gestión para Restaurante Soledad, optimizando pedidos, facturación y logística interna con una plataforma eficiente y moderna.",
+            "image": "proyect_008.jpg"
+        },
+        {
+            "title": "Festival de Ballenas 2023",
+            "description": "Gestión integral de comunicación para la Municipalidad de Los Órganos, incluyendo la creación de fan page, administración de redes sociales y producción de spots animados, logrando impactar a más de 10,000 usuarios.",
+            "image": "proyect_001.jpg"
+        },
+        {
+            "title": "Semana Tur 2023 - Órganos",
+            "description": "Desarrollo de sitio web oficial y diseño de merchandising exclusivo (llaveros, ropa, gorras) para la promoción del evento, incrementando la participación ciudadana en un 25%.",
+            "image": "proyect_002.jpg"
+        },
+        {
+            "title": "Guía Tur - Los Órganos 2023",
+            "description": "Diseño y desarrollo de una guía turística digital para Los Órganos, facilitando el acceso a información clave sobre atractivos, gastronomía y hospedajes locales.",
+            "image": "proyect_011.jpg"
+        },
+        {
+            "title": "La Regata del Siglo - El Alto 2023",
+            "description": "Producción audiovisual y estrategia digital para la difusión del evento náutico más importante de El Alto, resaltando su impacto turístico y cultural.",
+            "image": "proyect_012.jpg"
+        },
+        {
+            "title": "IMICITO - IMI del Perú 2022",
+            "description": "Creación y animación de 'IMICITO', personaje corporativo diseñado en motion graphics para mejorar la comunicación y engagement de IMI del Perú con su audiencia.",
+            "image": "proyect_009.jpg"
+        },
+        {
+            "title": "Pronto Pago - SAVIA 2022",
+            "description": "Desarrollo de la identidad y material promocional para 'Pronto Pago', sistema de factoring empresarial que agiliza el financiamiento a través de facturas electrónicas.",
+            "image": "proyect_010.jpg"
+        },
+        {
+            "title": "Campaña - Jhony Zárate 2022",
+            "description": "Producción de videos promocionales y estrategia digital para la postulación de Jhony Zárate a la alcaldía, enfocada en comunicación visual efectiva y persuasiva.",
+            "image": "proyect_014.jpg"
+        },
+        {
+            "title": "Videoclip DJ Gian - 2021",
+            "description": "Producción de videoclip promocional para DJ Gian, resaltando las bellezas naturales de Talara como escenario principal, combinando música y paisajes en una experiencia visual impactante.",
+            "image": "proyect_005.jpg"
+        },
+        {
+            "title": "Campaña- Erick Estrada",
+            "description": "Desarrollo de estrategia digital, producción de contenido audiovisual y gestión de redes sociales para la candidatura de Erick Estrada a la alcaldía de La Brea - Negritos.",
+            "image": "proyect_006.jpg"
+        },
+        {
+            "title": "Talara, Capital del Turismo ",
+            "description": "Producción de spot promocional destacando a Talara como epicentro del turismo regional, con imágenes impactantes y una narrativa inspiradora.",
+            "image": "proyect_013.jpg"
+        },
+        {
+            "title": "Travel Talara",
+            "description": "Creación de plataforma de turismo 'Travel Talara', un proyecto innovador para promover los destinos más emblemáticos de la región mediante contenido digital atractivo y estrategias de marketing.",
+            "image": "proyect_007.jpg"
+        }
+    ]
+}

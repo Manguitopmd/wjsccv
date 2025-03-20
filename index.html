@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portafolio de Wilmer Salazar - Una historia de creatividad, innovación y resultados">
+    <meta name="keywords" content="marketing digital, redes sociales, video, desarrollo web, diseño gráfico, drones, motion graphics, formación, IA">
+    <title>WS</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+    <!-- Navegación -->
+    <nav class="navbar">
+        <div class="logo animate-bounce" ><a href="#hero" style="text-decoration: none;color:white;">Wilmer Salazar</a></div>
+        <ul class="nav-links">
+            <li><a href="#about"><i class="fas fa-user"></i> Mi Origen</a></li>
+            <li><a href="#skills"><i class="fas fa-star"></i> Mis Armas</a></li>
+            <li><a href="#portfolio"><i class="fas fa-video"></i> Mis Obras</a></li>
+            <li><a href="#audiovisual"><i class="fas fa-film"></i> Mi Visión</a></li>
+            <li><a href="#experience"><i class="fas fa-briefcase"></i> Mi Camino</a></li>
+            <li><a href="#contact"><i class="fas fa-envelope"></i> Únete</a></li>
+        </ul>
+        <div class="hamburger">☰</div>
+    </nav>
+
+    <!-- Hero con Slider Parallax -->
+    <section id="hero" class="hero">
+        <div class="parallax-slider">
+            <div class="slide active" data-text="Marketing Digital" style="background-image: url('bg001.jpg');">
+                <div class="slide-text">Estrategias que Convierten</div>
+            </div>
+            <div class="slide" data-text="Video y Drones" style="background-image: url('bg002.jpg');">
+                <div class="slide-text">Contenido que Impacta</div>
+            </div>
+            <div class="slide" data-text="Desarrollo Web" style="background-image: url('bg003.jpg');">
+                <div class="slide-text">Soluciones Digitales</div>
+            </div>
+        </div>
+        <div class="slider-controls">
+            <button class="slider-prev"><i class="fas fa-arrow-left"></i></button>
+            <button class="slider-next"><i class="fas fa-arrow-right"></i></button>
+        </div>
+        <div class="hero-content">
+            <h1 class="typewriter">Wilmer Salazar</h1>
+            <p class="dynamic-text" id="dynamic-text"></p>
+            <a href="#contact" class="btn pulse"><i class="fas fa-rocket"></i> ¡Despeguemos Juntos!</a>
+            <a href="https://www.youtube.com/@manguitopublicidad" target="_blank" class="btn secondary fade-in delay-2">
+                <i class="fab fa-youtube"></i> Descubre mi Universo
+            </a>
+        </div>
+
+        <canvas id="particles"></canvas>
+    </section>
+
+    <!-- Sobre Mí -->
+    <section id="about" class="section">
+        <h2><i class="fas fa-user spin-icon"></i> Mi Historia</h2>
+        <p class="slide-up">Todo comenzó con una chispa: la pasión por crear y transformar ideas en realidades. Hace más de 15 años, me aventuré en el mundo del diseño y la innovación, desde bocetos en papel hasta experiencias digitales. Hoy, como líder de Manguito PMD, convierto esa chispa en llamas de creatividad, llevando proyectos como el "Festival de Ballenas" (2023) a un nuevo nivel.</p>
+    </section>
+
+
+    <!-- Habilidades -->
+    <section id="skills" class="section">
+        <h2><i class="fas fa-star spin-icon"></i> Mis Armas</h2>
+        <p class="slide-up">Cada herramienta que manejo es parte de un arsenal construido con años de dedicación y pasión. Desde lo tradicional hasta lo vanguardista, mi versatilidad es mi mayor ventaja. Descubre cómo transformo ideas en realidades.</p>
+
+        <div class="skills-container">
+            <div class="skills-list slide-up">
+                <div class="skill-card" data-skill="marketing"><i class="fas fa-bullhorn"></i><span>Marketing</span></div>
+                <div class="skill-card" data-skill="video"><i class="fas fa-video"></i><span>Video</span></div>
+                <div class="skill-card" data-skill="web"><i class="fas fa-code"></i><span>Web</span></div>
+                <div class="skill-card" data-skill="design"><i class="fas fa-paint-brush"></i><span>Diseño</span></div>
+                <div class="skill-card" data-skill="social"><i class="fab fa-instagram"></i><span>Social</span></div>
+                <div class="skill-card" data-skill="ia"><i class="fas fa-robot"></i><span>IA</span></div>
+            </div>
+            <div class="tools-list slide-up delay-1" id="tools-list"></div>
+        </div>
+    </section>
+
+    <!-- Frase poderosa entre Habilidades y Portafolio -->
+    <div class="quote-section">
+        <p class="quote">"La creatividad es la inteligencia divirtiéndose." <span>- Albert Einstein</span></p>
+    </div>
+
+    <!-- Portafolio con Carrusel -->
+    <section id="portfolio" class="section">
+        <h2><i class="fas fa-video spin-icon"></i> Mis Obras</h2>
+        <p class="slide-up">Cada proyecto es un capítulo de mi historia: desde campañas que enganchan hasta sitios web que resuelven. Aquí tienes algunos de mis hitos, prueba tangible de lo que puedo hacer por ti.</p>
+        <div class="video-carousel">
+            <button class="carousel-prev"><i class="fas fa-arrow-left"></i></button>
+            <div class="carousel-track" id="portfolio-track"></div>
+            <button class="carousel-next"><i class="fas fa-arrow-right"></i></button>
+        </div>
+        <a href="#contact" class="btn cta-portfolio slide-up delay-2"><i class="fas fa-phone"></i> Escribamos tu Capítulo</a>
+    </section>
+
+    <!-- Trabajos Audiovisuales -->
+    <section id="audiovisual" class="section">
+        <h2><i class="fas fa-film spin-icon"></i> Mi Visión</h2>
+        <p class="slide-up">El video es mi lienzo: drones que capturan el cielo, animaciones que cobran vida y reels que detienen el scroll. Esto es lo que veo cuando pienso en grande.</p>
+        <div class="video-carousel">
+            <button class="carousel-prev"><i class="fas fa-arrow-left"></i></button>
+            <div class="carousel-track" id="video-track"></div>
+            <button class="carousel-next"><i class="fas fa-arrow-right"></i></button>
+        </div>
+    </section>
+
+    <!-- Experiencia -->
+    <section id="experience" class="section">
+        <h2><i class="fas fa-briefcase spin-icon"></i> Mi Camino</h2>
+        <p class="slide-up">No ha sido un camino recto: he enfrentado retos, aprendido de caídas y celebrado victorias. Estas experiencias me han moldeado, dándome la fuerza para liderar y crear sin límites.</p>
+        <div class="accordion">
+            <div class="accordion-item slide-up">
+                <button class="accordion-header">Creador de Contenido para Redes Sociales - Acústica EIRL <span class="accordion-date">Octubre 2020 – Agosto 2023</span></button>
+                <div class="accordion-content">
+                    <p>Elevé marcas con estrategias digitales innovadoras, aumentando el engagement y optimizando su presencia online.</p>
+                </div>
+            </div>
+            <div class="accordion-item slide-up delay-1">
+                <button class="accordion-header">Diseñador Gráfico - Representaciones D Maruja <span class="accordion-date">Febrero 2019 – Marzo 2020</span></button>
+                <div class="accordion-content">
+                    <p>Crafté piezas gráficas que capturaron audiencias y fortalecieron la identidad digital de la marca.</p>
+                </div>
+            </div>
+            <div class="accordion-item slide-up delay-2">
+                <button class="accordion-header">Desarrollador Web - I.E.P. San Ignacio de Loyola <span class="accordion-date">Abril 2015 – Diciembre 2019</span></button>
+                <div class="accordion-content">
+                    <p>Construí www.siltalara.com, un sitio que combina diseño intuitivo y funcionalidad de alto impacto.</p>
+                </div>
+            </div>
+            <div class="accordion-item slide-up delay-3">
+                <button class="accordion-header">Gerente de TI - Proserfast <span class="accordion-date">Abril 2015 – Diciembre 2016</span></button>
+                <div class="accordion-content">
+                    <p>Dirigí campañas publicitarias y proyectos digitales que impulsaron resultados en múltiples industrias.</p>
+                </div>
+            </div>
+            <div class="accordion-item slide-up delay-4">
+                <button class="accordion-header">Formador - I.E.P. San Ignacio de Loyola <span class="accordion-date">Marzo 2015 – Diciembre 2015</span></button>
+                <div class="accordion-content">
+                    <p>Empoderé a estudiantes y profesionales con habilidades digitales y creativas de vanguardia.</p>
+                </div>
+            </div>
+            <div class="accordion-item slide-up delay-5">
+                <button class="accordion-header">Desarrollador Web - Hospedaje Olasal <span class="accordion-date">Agosto 2014 – Noviembre 2014</span></button>
+                <div class="accordion-content">
+                    <p>Diseñé www.hospedajeolasal.com, priorizando usabilidad y estética para una experiencia única.</p>
+                </div>
+            </div>
+            <div class="accordion-item slide-up delay-6">
+                <button class="accordion-header">Formador - Ccacte Consulting <span class="accordion-date">Agosto 2013 – Diciembre 2014</span></button>
+                <div class="accordion-content">
+                    <p>Formé equipos en estrategias digitales que transformaron su enfoque de marketing.</p>
+                </div>
+            </div>
+            <div class="accordion-item slide-up delay-7">
+                <button class="accordion-header">Formador - La Católica <span class="accordion-date">Octubre 2011 – Enero 2013</span></button>
+                <div class="accordion-content">
+                    <p>Inspiré a estudiantes con técnicas creativas y tecnológicas de última generación.</p>
+                </div>
+            </div>
+            <div class="accordion-item slide-up delay-8">
+                <button class="accordion-header">Jefe de Mantenimiento - Del Nor Oeste <span class="accordion-date">Mayo 2011 – Diciembre 2011</span></button>
+                <div class="accordion-content">
+                    <p>Garantice la excelencia operativa de sistemas técnicos con un enfoque proactivo.</p>
+                </div>
+            </div>
+            <div class="accordion-item slide-up delay-9">
+                <button class="accordion-header">Desarrollador Web - La Servilletita Buffets <span class="accordion-date">Mayo 2011 – Agosto 2011</span></button>
+                <div class="accordion-content">
+                    <p>Creé www.laservilletitabc.com, un sitio que destacó en el competitivo mundo de eventos.</p>
+                </div>
+            </div>
+            <div class="accordion-item slide-up delay-10">
+                <button class="accordion-header">Formador - I.E.P. San Ignacio de Loyola <span class="accordion-date">Agosto 2010 – Diciembre 2010</span></button>
+                <div class="accordion-content">
+                    <p>Capacité en desarrollo web y diseño, sembrando las bases para el éxito digital.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Frase poderosa entre Experiencia y Contacto -->
+    <div class="quote-section">
+        <p class="quote">"El futuro pertenece a quienes creen en la belleza de sus sueños." <span>- Eleanor Roosevelt</span></p>
+    </div>
+
+    <!-- Contacto -->
+    <section id="contact" class="section">
+        <h2><i class="fas fa-envelope spin-icon"></i> Únete a mi Historia</h2>
+        <p class="slide-up">Mi viaje sigue adelante, y tú puedes ser parte de él. ¿Tienes una idea? ¿Un sueño? Hagámoslo realidad juntos. Estoy listo para viajar, reubicarme y crear algo extraordinario contigo.</p>
+        <form id="contact-form" class="slide-up delay-1">
+            <input type="text" id="name" name="name" placeholder="Tu Nombre">
+            <input type="email" id="email" name="email" placeholder="Tu Email">
+            <textarea id="message" name="message" placeholder="Tu Mensaje"></textarea>
+            <button type="submit" class="btn ripple"><i class="fas fa-paper-plane"></i> Enviar a WhatsApp</button>
+        </form>
+        <p class="slide-up delay-2">wsctrabajos@gmail.com | 930 288 404</p>
+        <div class="social-icons slide-up delay-3">
+            <a href="https://www.behance.net/manguitpublicidad" target="_blank" class="icon-btn"><i class="fab fa-behance"></i></a>
+            <a href="https://web.facebook.com/manguitopublicidadpmd" target="_blank" class="icon-btn"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.instagram.com/manguitopublicidad/" target="_blank" class="icon-btn"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.tiktok.com/@manguitopublicidad" target="_blank" class="icon-btn"><i class="fab fa-tiktok"></i></a>
+            <a href="https://www.youtube.com/@manguitopublicidad" target="_blank" class="icon-btn"><i class="fab fa-youtube"></i></a>
+        </div>
+        <a href="cv.pdf" download class="btn secondary slide-up delay-4"><i class="fas fa-download"></i> Descarga mi CV</a>
+    </section>
+
+    <!-- Botón Flotante -->
+    <a href="#contact" class="floating-btn"><i class="fas fa-comment-dots"></i></a>
+
+    <!-- Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content slide-up">
+            <span class="close">×</span>
+            <h3 id="modal-title"></h3>
+            <p id="modal-description"></p>
+            <iframe id="modal-video" width="100%" height="315" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
