@@ -412,7 +412,7 @@ h2:hover .spin-icon {
 .carousel-track { 
     display: flex; 
     transition: transform 0.5s ease; 
-    width: max-content; /* Ajusta al contenido total */
+    width: max-content;
 }
 
 .carousel-item { 
@@ -762,18 +762,52 @@ h2:hover .spin-icon {
         display: block; 
     }
 
+    /* Ajustes al Hero en móviles */
+    .hero {
+        height: 100vh;
+        padding: 20px;
+    }
+
+    .slide {
+        background-size: cover; /* Asegura que la imagen cubra todo */
+        background-position: center;
+    }
+
+    .slide-text {
+        font-size: 1.5em; /* Más pequeño pero legible */
+        bottom: 15%;
+    }
+
     .hero-content h1 { 
-        font-size: 2.5em;
+        font-size: 2.5em; /* Reducido pero más adecuado */
+        margin-bottom: 10px;
     }
 
     .hero-content .dynamic-text { 
+        font-size: 1.2em; /* Más legible */
+        margin-bottom: 15px;
+    }
+
+    .btn {
+        padding: 10px 20px; /* Botones más compactos */
+        font-size: 1em;
+    }
+
+    .slider-controls {
+        padding: 0 20px;
+    }
+
+    .slider-prev, .slider-next {
+        padding: 8px;
         font-size: 1.2em;
     }
 
+    /* Ajustes a las secciones */
     .section { 
         padding: 60px 20px;
     }
 
+    /* Ajustes al carrusel en móviles */
     .video-carousel { 
         padding: 0 40px;
         overflow: hidden;
@@ -784,9 +818,18 @@ h2:hover .spin-icon {
     }
 
     .carousel-item { 
-        flex: 0 0 calc(80% - 10px);
-        max-width: calc(80% - 10px);
+        flex: 0 0 calc(90% - 10px); /* Más grande, 90% del viewport */
+        max-width: calc(90% - 10px);
         margin: 10px 5px;
+        padding: 10px; /* Reducido para evitar exceso */
+    }
+
+    .carousel-item iframe, .carousel-item img { 
+        height: 200px; /* Aumentado para mejor visibilidad */
+    }
+
+    .carousel-item h3 { 
+        font-size: 1.2em; /* Más legible */
     }
 
     .carousel-prev { 
