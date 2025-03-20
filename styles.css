@@ -404,23 +404,20 @@ h2:hover .spin-icon {
     position: relative; 
     max-width: 1000px;
     margin: 0 auto; 
-    padding: 0 60px; /* Espacio para botones */
+    padding: 0 60px;
     width: 100%; 
-    overflow: hidden; /* Evita desbordamiento horizontal */
+    overflow: hidden;
 }
 
 .carousel-track { 
     display: flex; 
     transition: transform 0.5s ease; 
-    position: relative; 
-    z-index: 1; 
-    width: 100%; /* Ajustado al contenedor padre */
-    overflow: hidden; /* Refuerza contención */
+    width: max-content; /* Ajusta al contenido total */
 }
 
 .carousel-item { 
-    flex: 0 0 300px; /* Ancho fijo inicial, pero flexible */
-    max-width: 300px; /* Límite máximo */
+    flex: 0 0 300px;
+    max-width: 300px;
     background: rgba(255,255,255,0.1); 
     padding: 15px;
     margin: 10px 5px; 
@@ -428,7 +425,6 @@ h2:hover .spin-icon {
     box-shadow: 0 5px 20px rgba(0,0,0,0.3); 
     text-align: center; 
     transition: transform 0.3s, box-shadow 0.3s; 
-    z-index: 1; 
 }
 
 .carousel-item:hover { 
@@ -779,19 +775,18 @@ h2:hover .spin-icon {
     }
 
     .video-carousel { 
-        padding: 0 40px; /* Reducido para móviles */
-        overflow: hidden; /* Refuerza contención */
+        padding: 0 40px;
+        overflow: hidden;
     }
 
     .carousel-track {
-        width: 100%; /* Ajustado al contenedor */
-        overflow: hidden; /* Evita desbordamiento */
+        width: max-content;
     }
 
     .carousel-item { 
-        flex: 0 0 calc(80% - 10px); /* Ancho relativo al viewport menos márgenes */
-        max-width: calc(80% - 10px); /* Limita al 80% del contenedor */
-        margin: 10px 5px; /* Mantener márgenes pequeños */
+        flex: 0 0 calc(80% - 10px);
+        max-width: calc(80% - 10px);
+        margin: 10px 5px;
     }
 
     .carousel-prev { 

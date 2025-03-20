@@ -79,36 +79,27 @@ document.addEventListener('DOMContentLoaded', () => {
         const track = document.getElementById(trackId);
         const prevBtn = document.querySelector(prevBtnSelector);
         const nextBtn = document.querySelector(nextBtnSelector);
-        const items = track.querySelectorAll('.carousel-item');
+        const items = Array.from(track.querySelectorAll('.carousel-item')); // Ítems originales
         const totalItems = items.length;
+        let itemWidth = items[0].offsetWidth + 10; // Ancho inicial + margen
 
-        // Calcular ancho dinámico según el viewport
-        const updateItemWidth = () => {
-            const item = items[0];
-            return window.innerWidth <= 768 ? item.offsetWidth + 10 : 310; // 300px + 10px margen en escritorio, dinámico en móvil
-        };
-        let itemWidth = updateItemWidth();
-
-        // Clonar ítems para el bucle infinito
-        const cloneCount = Math.ceil(window.innerWidth / itemWidth) + 1;
-        for (let i = 0; i < cloneCount; i++) {
-            items.forEach(item => {
-                const clone = item.cloneNode(true);
-                track.appendChild(clone);
-            });
-        }
+        // Duplicar ítems para el efecto infinito
+        items.forEach(item => track.appendChild(item.cloneNode(true)));
 
         let position = 0;
-        let isAnimating = false;
 
         function updatePosition() {
             track.style.transition = 'transform 0.5s ease';
             track.style.transform = `translateX(${position}px)`;
         }
 
-        function resetPosition() {
+        function resetPosition(direction) {
             track.style.transition = 'none';
-            position = position % (totalItems * itemWidth);
+            if (direction === 'next' && Math.abs(position) >= totalItems * itemWidth) {
+                position = 0;
+            } else if (direction === 'prev' && position >= 0) {
+                position = -(totalItems * itemWidth);
+            }
             track.style.transform = `translateX(${position}px)`;
             setTimeout(() => {
                 track.style.transition = 'transform 0.5s ease';
@@ -116,52 +107,42 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         nextBtn.addEventListener('click', () => {
-            if (isAnimating) return;
-            isAnimating = true;
             position -= itemWidth;
             updatePosition();
-
             setTimeout(() => {
                 if (Math.abs(position) >= totalItems * itemWidth) {
-                    resetPosition();
+                    resetPosition('next');
                 }
-                isAnimating = false;
             }, 500);
         });
 
         prevBtn.addEventListener('click', () => {
-            if (isAnimating) return;
-            isAnimating = true;
             position += itemWidth;
             updatePosition();
-
             setTimeout(() => {
                 if (position >= 0) {
-                    position = -(totalItems * itemWidth - itemWidth);
-                    resetPosition();
+                    resetPosition('prev');
                 }
-                isAnimating = false;
             }, 500);
         });
 
-        // Actualizar ancho al redimensionar
+        // Ajustar al redimensionar
         window.addEventListener('resize', () => {
-            itemWidth = updateItemWidth();
+            itemWidth = items[0].offsetWidth + 10;
+            position = Math.round(position / itemWidth) * itemWidth;
+            updatePosition();
         });
     }
 
     // Carrusel de Portafolio desde data.json
     fetch('data.json')
         .then(response => {
-            if (!response.ok) {
-                throw new Error('No se pudo cargar data.json');
-            }
+            if (!response.ok) throw new Error('No se pudo cargar data.json');
             return response.json();
         })
         .then(data => {
             const portfolioTrack = document.getElementById('portfolio-track');
-            const portfolio = data.portfolio;
-            portfolio.forEach(item => {
+            data.portfolio.forEach(item => {
                 const div = document.createElement('div');
                 div.classList.add('carousel-item');
                 div.innerHTML = `
@@ -171,13 +152,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 div.addEventListener('click', () => openModal(item));
                 portfolioTrack.appendChild(div);
             });
-
             initializeInfiniteCarousel('portfolio-track', '#portfolio .carousel-prev', '#portfolio .carousel-next');
         })
         .catch(error => {
             console.error('Error al cargar data.json:', error);
-            const portfolioTrack = document.getElementById('portfolio-track');
-            portfolioTrack.innerHTML = '<p>Error al cargar el portafolio. Por favor, revisa la consola.</p>';
+            document.getElementById('portfolio-track').innerHTML = '<p>Error al cargar el portafolio.</p>';
         });
 
     // Carrusel de Trabajos Audiovisuales
