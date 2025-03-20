@@ -11,13 +11,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Deslizamiento suave para enlaces del menú y el logo
-    document.querySelectorAll('.nav-links a, .logo').forEach(link => {
+    document.querySelectorAll('.nav-links a, .logo a').forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
             const targetId = link.getAttribute('href').substring(1);
             const targetSection = document.getElementById(targetId);
             targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            if (window.innerWidth <= 768 && isMenuOpen && link !== document.querySelector('.logo')) {
+            if (window.innerWidth <= 768 && isMenuOpen) {
                 navLinks.classList.remove('active');
                 isMenuOpen = false;
                 hamburger.textContent = '☰';
@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const totalItems = items.length;
 
         // Clonar ítems para el bucle infinito
-        const cloneCount = Math.ceil(window.innerWidth / itemWidth) + 1; // Clones suficientes para cubrir la pantalla
+        const cloneCount = Math.ceil(window.innerWidth / itemWidth) + 1;
         for (let i = 0; i < cloneCount; i++) {
             items.forEach(item => {
                 const clone = item.cloneNode(true);
@@ -102,10 +102,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         function resetPosition() {
             track.style.transition = 'none';
-            position = position % (totalItems * itemWidth); // Volver al inicio real
+            position = position % (totalItems * itemWidth);
             track.style.transform = `translateX(${position}px)`;
             setTimeout(() => {
-                track.style.transition = 'transform 0.5s ease'; // Restaurar transición después del salto
+                track.style.transition = 'transform 0.5s ease';
             }, 0);
         }
 
@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     resetPosition();
                 }
                 isAnimating = false;
-            }, 500); // Duración de la transición
+            }, 500);
         });
 
         prevBtn.addEventListener('click', () => {
@@ -135,13 +135,18 @@ document.addEventListener('DOMContentLoaded', () => {
                     resetPosition();
                 }
                 isAnimating = false;
-            }, 500); // Duración de la transición
+            }, 500);
         });
     }
 
     // Carrusel de Portafolio desde data.json
     fetch('data.json')
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('No se pudo cargar data.json');
+            }
+            return response.json();
+        })
         .then(data => {
             const portfolioTrack = document.getElementById('portfolio-track');
             const portfolio = data.portfolio;
@@ -156,10 +161,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 portfolioTrack.appendChild(div);
             });
 
-            // Inicializar carrusel infinito para Portafolio
             initializeInfiniteCarousel('portfolio-track', '#portfolio .carousel-prev', '#portfolio .carousel-next');
         })
-        .catch(error => console.error('Error al cargar data.json:', error));
+        .catch(error => {
+            console.error('Error al cargar data.json:', error);
+            const portfolioTrack = document.getElementById('portfolio-track');
+            portfolioTrack.innerHTML = '<p>Error al cargar el portafolio. Por favor, revisa la consola.</p>';
+        });
 
     // Carrusel de Trabajos Audiovisuales
     const videoTrack = document.getElementById('video-track');
@@ -183,7 +191,6 @@ document.addEventListener('DOMContentLoaded', () => {
         videoTrack.appendChild(div);
     });
 
-    // Inicializar carrusel infinito para Audiovisual
     initializeInfiniteCarousel('video-track', '#audiovisual .carousel-prev', '#audiovisual .carousel-next');
 
     // Modal
@@ -338,92 +345,91 @@ document.addEventListener('DOMContentLoaded', () => {
     const skillCards = document.querySelectorAll('.skill-card');
 
     const tools = {
-    marketing: [
-        { name: 'Google Ads', icon: 'fas fa-ad' },
-        { name: 'Google Analytics', icon: 'fas fa-chart-line' },
-        { name: 'SEMRush', icon: 'fas fa-search' },
-        { name: 'HubSpot', icon: 'fas fa-briefcase' },
-        { name: 'Ahrefs', icon: 'fas fa-globe' },
-        { name: 'Moz', icon: 'fas fa-search-dollar' },
-        { name: 'Facebook Ads', icon: 'fab fa-facebook' },
-        { name: 'TikTok Ads', icon: 'fab fa-tiktok' },
-        { name: 'Metricool', icon: 'fas fa-envelope' },
-        { name: 'ActiveCampaign', icon: 'fas fa-mail-bulk' },
-        { name: 'Google Tag Manager', icon: 'fas fa-tags' },
-        { name: 'Ubersuggest', icon: 'fas fa-lightbulb' }
-    ],
-    video: [
-        { name: 'Premiere Pro', icon: 'fas fa-video' },
-        { name: 'After Effects', icon: 'fas fa-film' },
-        { name: 'DaVinci Resolve', icon: 'fas fa-cut' },
-        { name: 'Moho', icon: 'fas fa-video-slash' },
-        { name: 'CapCut', icon: 'fas fa-mobile-alt' },
-        { name: 'Filmora', icon: 'fas fa-video' },
-        { name: 'InShot', icon: 'fas fa-crop' },
-        { name: 'VN Video Editor', icon: 'fas fa-play' },
-        { name: 'Lumen5', icon: 'fas fa-robot' },
-        { name: 'HitFilm Express', icon: 'fas fa-magic' },
-        { name: 'Animoto', icon: 'fas fa-photo-video' },
-        { name: 'Cartoon Animator', icon: 'fas fa-desktop' }
-    ],
-    web: [
-        { name: 'HTML/CSS', icon: 'fab fa-html5' },
-        { name: 'JavaScript', icon: 'fab fa-js' },
-        { name: 'React', icon: 'fab fa-react' },
-        { name: 'Node.js', icon: 'fab fa-node' },
-        { name: 'WordPress', icon: 'fab fa-wordpress' },
-        { name: 'Next.js', icon: 'fas fa-code' },
-        { name: 'Django', icon: 'fab fa-python' },
-        { name: 'PHP', icon: 'fab fa-php' },
-        { name: 'Bootstrap', icon: 'fab fa-bootstrap' },
-        { name: 'Tailwind CSS', icon: 'fas fa-wind' },
-        { name: 'Vue.js', icon: 'fab fa-vuejs' },
-        { name: 'Svelte', icon: 'fas fa-leaf' }
-    ],
-    design: [
-        { name: 'Photoshop', icon: 'fas fa-image' },
-        { name: 'Illustrator', icon: 'fas fa-pen-nib' },
-        { name: 'Figma', icon: 'fab fa-figma' },
-        { name: 'Canva', icon: 'fas fa-palette' },
-        { name: 'CorelDRAW', icon: 'fas fa-draw-polygon' },
-        { name: 'Affinity Designer', icon: 'fas fa-vector-square' },
-        { name: 'Sketch', icon: 'fas fa-bezier-curve' },
-        { name: 'Procreate', icon: 'fas fa-paint-brush' },
-        { name: 'InDesign', icon: 'fas fa-file-alt' },
-        { name: 'Blender', icon: 'fas fa-cube' },
-        { name: 'GIMP', icon: 'fas fa-image' },
-        { name: 'Krita', icon: 'fas fa-pencil-alt' }
-    ],
-    social: [
-        { name: 'Hootsuite', icon: 'fas fa-calendar-alt' },
-        { name: 'Buffer', icon: 'fas fa-clock' },
-        { name: 'Meta Business', icon: 'fab fa-facebook' },
-        { name: 'TikTok Ads', icon: 'fab fa-tiktok' },
-        { name: 'Later', icon: 'fas fa-schedule' },
-        { name: 'Sprout Social', icon: 'fas fa-comments' },
-        { name: 'SocialPilot', icon: 'fas fa-share-alt' },
-        { name: 'TweetDeck', icon: 'fab fa-twitter' },
-        { name: 'Loomly', icon: 'fas fa-chart-bar' },
-        { name: 'Sendible', icon: 'fas fa-paper-plane' },
-        { name: 'CoSchedule', icon: 'fas fa-tasks' },
-        { name: 'Zoho Social', icon: 'fas fa-users' }
-    ],
-    ia: [
-        { name: 'ChatGPT', icon: 'fas fa-robot' },
-        { name: 'MidJourney', icon: 'fas fa-brain' },
-        { name: 'Grok', icon: 'fas fa-microchip' },
-        { name: 'DeekSeek', icon: 'fas fa-cogs' },
-        { name: 'DALL·E', icon: 'fas fa-paint-brush' },
-        { name: 'ElevenLabs', icon: 'fas fa-images' },
-        { name: 'Adobe Firefly ', icon: 'fas fa-language' },
-        { name: 'Runway ', icon: 'fas fa-keyboard' },
-        { name: 'Synthesia', icon: 'fas fa-video' },
-        { name: 'Claude AI', icon: 'fas fa-comments' },
-        { name: 'Perplexity AI', icon: 'fas fa-search' },
-        { name: 'Rytr', icon: 'fas fa-microphone' }
-    ]
-};
-
+        marketing: [
+            { name: 'Google Ads', icon: 'fas fa-ad' },
+            { name: 'Google Analytics', icon: 'fas fa-chart-line' },
+            { name: 'SEMRush', icon: 'fas fa-search' },
+            { name: 'HubSpot', icon: 'fas fa-briefcase' },
+            { name: 'Ahrefs', icon: 'fas fa-globe' },
+            { name: 'Moz', icon: 'fas fa-search-dollar' },
+            { name: 'Facebook Ads', icon: 'fab fa-facebook' },
+            { name: 'TikTok Ads', icon: 'fab fa-tiktok' },
+            { name: 'Metricool', icon: 'fas fa-envelope' },
+            { name: 'ActiveCam', icon: 'fas fa-mail-bulk' },
+            { name: 'Google Tag Manager', icon: 'fas fa-tags' },
+            { name: 'Ubersuggest', icon: 'fas fa-lightbulb' }
+        ],
+        video: [
+            { name: 'Premiere Pro', icon: 'fas fa-video' },
+            { name: 'After Effects', icon: 'fas fa-film' },
+            { name: 'DaVinci Resolve', icon: 'fas fa-cut' },
+            { name: 'Moho', icon: 'fas fa-video-slash' },
+            { name: 'CapCut', icon: 'fas fa-mobile-alt' },
+            { name: 'Filmora', icon: 'fas fa-video' },
+            { name: 'InShot', icon: 'fas fa-crop' },
+            { name: 'VN Video Editor', icon: 'fas fa-play' },
+            { name: 'Lumen5', icon: 'fas fa-robot' },
+            { name: 'HitFilm Express', icon: 'fas fa-magic' },
+            { name: 'Animoto', icon: 'fas fa-photo-video' },
+            { name: 'Cartoon Animator', icon: 'fas fa-desktop' }
+        ],
+        web: [
+            { name: 'HTML/CSS', icon: 'fab fa-html5' },
+            { name: 'JavaScript', icon: 'fab fa-js' },
+            { name: 'React', icon: 'fab fa-react' },
+            { name: 'Node.js', icon: 'fab fa-node' },
+            { name: 'WordPress', icon: 'fab fa-wordpress' },
+            { name: 'Next.js', icon: 'fas fa-code' },
+            { name: 'Django', icon: 'fab fa-python' },
+            { name: 'PHP', icon: 'fab fa-php' },
+            { name: 'Bootstrap', icon: 'fab fa-bootstrap' },
+            { name: 'Tailwind CSS', icon: 'fas fa-wind' },
+            { name: 'Vue.js', icon: 'fab fa-vuejs' },
+            { name: 'Svelte', icon: 'fas fa-leaf' }
+        ],
+        design: [
+            { name: 'Photoshop', icon: 'fas fa-image' },
+            { name: 'Illustrator', icon: 'fas fa-pen-nib' },
+            { name: 'Figma', icon: 'fab fa-figma' },
+            { name: 'Canva', icon: 'fas fa-palette' },
+            { name: 'CorelDRAW', icon: 'fas fa-draw-polygon' },
+            { name: 'Affinity Designer', icon: 'fas fa-vector-square' },
+            { name: 'Sketch', icon: 'fas fa-bezier-curve' },
+            { name: 'Procreate', icon: 'fas fa-paint-brush' },
+            { name: 'InDesign', icon: 'fas fa-file-alt' },
+            { name: 'Blender', icon: 'fas fa-cube' },
+            { name: 'GIMP', icon: 'fas fa-image' },
+            { name: 'Krita', icon: 'fas fa-pencil-alt' }
+        ],
+        social: [
+            { name: 'Hootsuite', icon: 'fas fa-calendar-alt' },
+            { name: 'Buffer', icon: 'fas fa-clock' },
+            { name: 'Meta Business', icon: 'fab fa-facebook' },
+            { name: 'TikTok Ads', icon: 'fab fa-tiktok' },
+            { name: 'Later', icon: 'fas fa-schedule' },
+            { name: 'Sprout Social', icon: 'fas fa-comments' },
+            { name: 'SocialPilot', icon: 'fas fa-share-alt' },
+            { name: 'TweetDeck', icon: 'fab fa-twitter' },
+            { name: 'Loomly', icon: 'fas fa-chart-bar' },
+            { name: 'Sendible', icon: 'fas fa-paper-plane' },
+            { name: 'CoSchedule', icon: 'fas fa-tasks' },
+            { name: 'Zoho Social', icon: 'fas fa-users' }
+        ],
+        ia: [
+            { name: 'ChatGPT', icon: 'fas fa-robot' },
+            { name: 'MidJourney', icon: 'fas fa-brain' },
+            { name: 'Grok', icon: 'fas fa-microchip' },
+            { name: 'DeekSeek', icon: 'fas fa-cogs' },
+            { name: 'DALL·E', icon: 'fas fa-paint-brush' },
+            { name: 'ElevenLabs', icon: 'fas fa-images' },
+            { name: 'Adobe Firefly ', icon: 'fas fa-language' },
+            { name: 'Runway ', icon: 'fas fa-keyboard' },
+            { name: 'Synthesia', icon: 'fas fa-video' },
+            { name: 'Claude AI', icon: 'fas fa-comments' },
+            { name: 'Perplexity AI', icon: 'fas fa-search' },
+            { name: 'Rytr', icon: 'fas fa-microphone' }
+        ]
+    };
 
     function displayTools(skill) {
         toolsList.innerHTML = '';
@@ -448,7 +454,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Mostrar herramientas de Marketing por defecto
     displayTools('marketing');
     skillCards[0].classList.add('active');
 

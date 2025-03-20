@@ -11,6 +11,7 @@ body {
     background: #0a0a0a url('ruta-de-tu-imagen-de-fondo.jpg') no-repeat center center fixed;
     background-size: cover;
     overflow-x: hidden;
+    width: 100vw; /* Limita al ancho del viewport */
 }
 
 /* Navegación */
@@ -27,6 +28,7 @@ body {
     z-index: 1000;
     box-shadow: 0 4px 20px rgba(0,0,0,0.6);
     backdrop-filter: blur(10px);
+    max-width: 100vw; /* No exceder el viewport */
 }
 
 .logo { 
@@ -76,6 +78,7 @@ body {
     display: none; 
     font-size: 1.5em;
     cursor: pointer; 
+    margin-left: auto; /* Asegura visibilidad */
 }
 
 /* Hero con Parallax Slider */
@@ -87,6 +90,7 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
+    width: 100%; /* Limitado al viewport */
 }
 
 .parallax-slider { 
@@ -160,6 +164,7 @@ body {
     color: white; 
     z-index: 1; 
     text-shadow: 0 4px 10px rgba(0,0,0,0.7); 
+    padding: 0 15px; /* Espacio interno para móviles */
 }
 
 .hero-content h1 { 
@@ -233,6 +238,7 @@ body {
     text-align: center; 
     background: rgba(10, 10, 10, 0.85); 
     position: relative; 
+    width: 100%; /* Limitado al viewport */
 }
 
 .section h2 { 
@@ -268,6 +274,7 @@ h2:hover .spin-icon {
     max-width: 1000px;
     margin: 30px auto;
     justify-content: center;
+    padding: 0 15px; /* Espacio interno para móviles */
 }
 
 .skills-list {
@@ -373,6 +380,7 @@ h2:hover .spin-icon {
     padding: 40px 20px;
     text-align: center;
     background: rgba(0, 0, 0, 0.7);
+    width: 100%; /* Limitado al viewport */
 }
 
 .quote {
@@ -396,30 +404,31 @@ h2:hover .spin-icon {
     position: relative; 
     max-width: 1000px;
     margin: 0 auto; 
-    overflow: visible; /* Cambiado a visible para que los botones no queden cortados */
-    padding: 0 60px; /* Más espacio para los botones */
+    overflow: visible;
+    padding: 0 60px;
+    width: 100%; /* Limitado al viewport */
 }
 
 .carousel-track { 
     display: flex; 
     transition: transform 0.5s ease; 
     position: relative; 
-    z-index: 1; /* Menor que los botones */
-    width: calc(100% - 120px); /* Ajustado para no desbordar el contenedor */
-    margin: 0 auto; /* Centrado dentro del contenedor */
+    z-index: 1; 
+    width: calc(100% - 120px); /* Ajustado para no desbordar */
+    margin: 0 auto; 
 }
 
 .carousel-item { 
     min-width: 300px;
     background: rgba(255,255,255,0.1); 
     padding: 15px;
-    margin: 10px 5px; /* Reducido margen lateral para no empujar los botones */
+    margin: 10px 5px; 
     border-radius: 10px;
     box-shadow: 0 5px 20px rgba(0,0,0,0.3); 
     text-align: center; 
     transition: transform 0.3s, box-shadow 0.3s; 
     flex-shrink: 0; 
-    z-index: 1; /* Igual que el track, menor que los botones */
+    z-index: 1; 
 }
 
 .carousel-item:hover { 
@@ -447,12 +456,12 @@ h2:hover .spin-icon {
     background: rgba(0,0,0,0.8); 
     color: white; 
     border: none; 
-    padding: 12px; /* Aumentado para mayor visibilidad */
+    padding: 12px; 
     cursor: pointer; 
-    font-size: 1.8em; /* Botones más grandes */
+    font-size: 1.8em; 
     border-radius: 50%; 
     transition: background 0.3s, transform 0.3s; 
-    z-index: 20; /* Mucho mayor para estar siempre encima */
+    z-index: 20; 
 }
 
 .carousel-prev:hover, .carousel-next:hover { 
@@ -461,11 +470,11 @@ h2:hover .spin-icon {
 }
 
 .carousel-prev { 
-    left: 10px; /* Fuera del área del track */
+    left: 10px; 
 }
 
 .carousel-next { 
-    right: 10px; /* Fuera del área del track */
+    right: 10px; 
 }
 
 .cta-portfolio { 
@@ -537,6 +546,7 @@ h2:hover .spin-icon {
     display: flex; 
     flex-direction: column; 
     gap: 15px;
+    padding: 0 15px; /* Espacio interno para móviles */
 }
 
 #contact-form input, #contact-form textarea { 
@@ -547,6 +557,7 @@ h2:hover .spin-icon {
     background: #1a1a1a; 
     color: #fff; 
     transition: border-color 0.3s, box-shadow 0.3s; 
+    width: 100%; /* Ajustado al contenedor */
 }
 
 #contact-form input:focus, #contact-form textarea:focus { 
@@ -645,6 +656,7 @@ h2:hover .spin-icon {
     height: 100%; 
     background: rgba(0,0,0,0.9); 
     z-index: 2000; 
+    overflow-y: auto; /* Permitir scroll vertical si es necesario */
 }
 
 .modal-content { 
@@ -725,6 +737,14 @@ h2:hover .spin-icon {
 
 /* Responsividad */
 @media (max-width: 768px) {
+    body {
+        overflow-x: hidden; /* Reforzado */
+    }
+
+    .navbar { 
+        padding: 10px 15px;
+    }
+
     .nav-links { 
         display: none; 
         flex-direction: column; 
@@ -734,6 +754,8 @@ h2:hover .spin-icon {
         width: 100%; 
         background: rgba(10, 10, 10, 0.9); 
         padding: 15px;
+        z-index: 1000;
+        overflow-x: hidden; /* Evita desplazamiento lateral */
     }
 
     .nav-links.active { 
@@ -757,11 +779,11 @@ h2:hover .spin-icon {
     }
 
     .video-carousel { 
-        padding: 0 50px; /* Espacio suficiente en móviles */
+        padding: 0 50px;
     }
 
     .carousel-track {
-        width: calc(100% - 100px); /* Ajustado para móviles */
+        width: calc(100% - 100px);
     }
 
     .carousel-item { 
@@ -816,6 +838,14 @@ h2:hover .spin-icon {
     }
 
     .quote {
+        font-size: 1.2em;
+    }
+
+    .floating-btn {
+        bottom: 15px;
+        right: 15px;
+        width: 40px;
+        height: 40px;
         font-size: 1.2em;
     }
 }
