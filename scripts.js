@@ -74,64 +74,56 @@ document.addEventListener('DOMContentLoaded', () => {
     updateDynamicText();
     setInterval(updateDynamicText, 3000);
 
-    // Función para inicializar un carrusel infinito
-    function initializeInfiniteCarousel(trackId, prevBtnSelector, nextBtnSelector) {
+    // Función para inicializar un carrusel con indicadores
+    function initializeCarousel(trackId, prevBtnSelector, nextBtnSelector, indicatorsId) {
         const track = document.getElementById(trackId);
         const prevBtn = document.querySelector(prevBtnSelector);
         const nextBtn = document.querySelector(nextBtnSelector);
-        const items = Array.from(track.querySelectorAll('.carousel-item')); // Ítems originales
+        const indicatorsContainer = document.getElementById(indicatorsId);
+        const items = track.querySelectorAll('.carousel-item');
+        let currentIndex = 0;
         const totalItems = items.length;
-        let itemWidth = items[0].offsetWidth + 10; // Ancho inicial + margen
 
-        // Duplicar ítems para el efecto infinito
-        items.forEach(item => track.appendChild(item.cloneNode(true)));
-
-        let position = 0;
-
-        function updatePosition() {
-            track.style.transition = 'transform 0.5s ease';
-            track.style.transform = `translateX(${position}px)`;
+        // Crear indicadores
+        for (let i = 0; i < totalItems; i++) {
+            const indicator = document.createElement('div');
+            indicator.classList.add('carousel-indicator');
+            if (i === 0) indicator.classList.add('active');
+            indicator.addEventListener('click', () => {
+                currentIndex = i;
+                updateCarousel();
+            });
+            indicatorsContainer.appendChild(indicator);
         }
 
-        function resetPosition(direction) {
-            track.style.transition = 'none';
-            if (direction === 'next' && Math.abs(position) >= totalItems * itemWidth) {
-                position = 0;
-            } else if (direction === 'prev' && position >= 0) {
-                position = -(totalItems * itemWidth);
-            }
-            track.style.transform = `translateX(${position}px)`;
-            setTimeout(() => {
-                track.style.transition = 'transform 0.5s ease';
-            }, 0);
+        const indicators = indicatorsContainer.querySelectorAll('.carousel-indicator');
+
+        function updateCarousel() {
+            const itemsPerView = window.innerWidth > 1024 ? 3 : window.innerWidth > 768 ? 2 : 1;
+            const itemWidth = track.offsetWidth / itemsPerView;
+            const maxIndex = Math.ceil(totalItems / itemsPerView) - 1;
+            currentIndex = Math.min(Math.max(currentIndex, 0), maxIndex);
+            const offset = -currentIndex * itemWidth;
+            track.style.transform = `translateX(${offset}px)`;
+
+            // Actualizar indicadores
+            indicators.forEach((indicator, i) => {
+                indicator.classList.toggle('active', i === currentIndex);
+            });
         }
 
         nextBtn.addEventListener('click', () => {
-            position -= itemWidth;
-            updatePosition();
-            setTimeout(() => {
-                if (Math.abs(position) >= totalItems * itemWidth) {
-                    resetPosition('next');
-                }
-            }, 500);
+            currentIndex++;
+            updateCarousel();
         });
 
         prevBtn.addEventListener('click', () => {
-            position += itemWidth;
-            updatePosition();
-            setTimeout(() => {
-                if (position >= 0) {
-                    resetPosition('prev');
-                }
-            }, 500);
+            currentIndex--;
+            updateCarousel();
         });
 
-        // Ajustar al redimensionar
-        window.addEventListener('resize', () => {
-            itemWidth = items[0].offsetWidth + 10;
-            position = Math.round(position / itemWidth) * itemWidth;
-            updatePosition();
-        });
+        window.addEventListener('resize', updateCarousel);
+        updateCarousel();
     }
 
     // Carrusel de Portafolio desde data.json
@@ -152,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 div.addEventListener('click', () => openModal(item));
                 portfolioTrack.appendChild(div);
             });
-            initializeInfiniteCarousel('portfolio-track', '#portfolio .carousel-prev', '#portfolio .carousel-next');
+            initializeCarousel('portfolio-track', '#portfolio .carousel-prev', '#portfolio .carousel-next', 'portfolio-indicators');
         })
         .catch(error => {
             console.error('Error al cargar data.json:', error);
@@ -181,7 +173,7 @@ document.addEventListener('DOMContentLoaded', () => {
         videoTrack.appendChild(div);
     });
 
-    initializeInfiniteCarousel('video-track', '#audiovisual .carousel-prev', '#audiovisual .carousel-next');
+    initializeCarousel('video-track', '#audiovisual .carousel-prev', '#audiovisual .carousel-next', 'video-indicators');
 
     // Modal
     const modal = document.getElementById('modal');
@@ -460,5 +452,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
             content.style.maxHeight = isOpen ? null : `${content.scrollHeight}px`;
         });
+    });
+
+    // Botón Subir al Cielo
+    const scrollTopBtn = document.querySelector('.scroll-top-btn');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            scrollTopBtn.classList.add('visible');
+        } else {
+            scrollTopBtn.classList.remove('visible');
+        }
+    });
+
+    scrollTopBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 });

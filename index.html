@@ -57,8 +57,16 @@
     <!-- Sobre Mí -->
     <section id="about" class="section">
         <h2><i class="fas fa-user spin-icon"></i> Mi Historia</h2>
-        <p class="slide-up">Todo comenzó con una chispa: la pasión por crear y transformar ideas en realidades. Hace más de 15 años, me aventuré en el mundo del diseño y la innovación, desde bocetos en papel hasta experiencias digitales. Hoy, como líder de Manguito PMD, convierto esa chispa en llamas de creatividad, llevando proyectos como el "Festival de Ballenas" (2023) a un nuevo nivel.</p>
+        <p class="slide-up">Todo comenzó con una chispa: la pasión por crear y transformar ideas en realidades. Hace más de 15 años, me aventuré en el mundo del diseño y la innovación, desde bocetos en papel hasta experiencias digitales. Soy un apasionado por la fotografía y el video, capturando momentos y contando historias a través de imágenes. Hoy, como líder de Manguito PMD, convierto esa chispa en llamas de creatividad, llevando proyectos como el "Festival de Ballenas" (2023) a un nuevo nivel.</p>
     </section>
+
+    <!-- Nueva Sección: Facturación Electrónica (Aleatoria después de "Sobre Mí") -->
+<section id="billing-system" class="section highlight-section">
+    <h2><i class="fas fa-file-invoice spin-icon"></i> Facturación Electrónica Inteligente</h2>
+    <p class="slide-up">Simplifica tu negocio con nuestro sistema de facturación electrónica. Ágil, seguro y sin complicaciones, para que te enfoques en lo que realmente importa: hacer crecer tu empresa.</p>
+    <a href="https://wa.me/51930288404?text=Hola%20Wilmer,%20quiero%20más%20información%20sobre%20el%20sistema%20de%20facturación%20electrónica." target="_blank" class="btn slide-up delay-1"><i class="fas fa-question-circle"></i> Descubre cómo</a>
+</section>
+
 
     <!-- Habilidades -->
     <section id="skills" class="section">
@@ -66,12 +74,12 @@
         <p class="slide-up">Cada herramienta que manejo es parte de un arsenal construido con años de dedicación y pasión. Desde lo tradicional hasta lo vanguardista, mi versatilidad es mi mayor ventaja. Descubre cómo transformo ideas en realidades.</p>
         <div class="skills-container">
             <div class="skills-list slide-up">
-                <div class="skill-card" data-skill="marketing"><i class="fas fa-bullhorn"></i><span>Marketing</span></div>
-                <div class="skill-card" data-skill="video"><i class="fas fa-video"></i><span>Video</span></div>
-                <div class="skill-card" data-skill="web"><i class="fas fa-code"></i><span>Web</span></div>
-                <div class="skill-card" data-skill="design"><i class="fas fa-paint-brush"></i><span>Diseño</span></div>
-                <div class="skill-card" data-skill="social"><i class="fab fa-instagram"></i><span>Social</span></div>
-                <div class="skill-card" data-skill="ia"><i class="fas fa-robot"></i><span>IA</span></div>
+                <div class="skill-card" data-skill="marketing" data-tooltip="Estrategias que disparan resultados"><i class="fas fa-bullhorn"></i><span>Marketing</span></div>
+                <div class="skill-card" data-skill="video" data-tooltip="Historias que cobran vida en pantalla"><i class="fas fa-video"></i><span>Video</span></div>
+                <div class="skill-card" data-skill="web" data-tooltip="Código que construye mundos digitales"><i class="fas fa-code"></i><span>Web</span></div>
+                <div class="skill-card" data-skill="design" data-tooltip="Arte que captura la mirada"><i class="fas fa-paint-brush"></i><span>Diseño</span></div>
+                <div class="skill-card" data-skill="social" data-tooltip="Conexiones que mueven multitudes"><i class="fab fa-instagram"></i><span>Social</span></div>
+                <div class="skill-card" data-skill="ia" data-tooltip="Futuro impulsado por inteligencia"><i class="fas fa-robot"></i><span>IA</span></div>
             </div>
             <div class="tools-list slide-up delay-1" id="tools-list"></div>
         </div>
@@ -82,6 +90,13 @@
         <p class="quote">"La creatividad es la inteligencia divirtiéndose." <span>- Albert Einstein</span></p>
     </div>
 
+    <!-- Nueva Sección: Planes de Redes Sociales (Aleatoria después de "Habilidades") -->
+    <section id="social-plans" class="section highlight-section">
+        <h2><i class="fab fa-instagram spin-icon"></i> ¿Quieres Dominar las Redes?</h2>
+        <p class="slide-up">Si deseas que maneje tus redes sociales y las lleve al siguiente nivel, revisa mis planes personalizados diseñados para destacar tu marca.</p>
+        <a href="https://manguitopmd.github.io/biolink/planes.html" target="_blank" class="btn slide-up delay-1"><i class="fas fa-arrow-right"></i> Descubre Mis Planes</a>
+    </section>
+
     <!-- Portafolio con Carrusel -->
     <section id="portfolio" class="section">
         <h2><i class="fas fa-video spin-icon"></i> Mis Obras</h2>
@@ -90,6 +105,7 @@
             <button class="carousel-prev"><i class="fas fa-arrow-left"></i></button>
             <div class="carousel-track" id="portfolio-track"></div>
             <button class="carousel-next"><i class="fas fa-arrow-right"></i></button>
+            <div class="carousel-indicators" id="portfolio-indicators"></div>
         </div>
         <a href="#contact" class="btn cta-portfolio slide-up delay-2"><i class="fas fa-phone"></i> Escribamos tu Capítulo</a>
     </section>
@@ -102,7 +118,15 @@
             <button class="carousel-prev"><i class="fas fa-arrow-left"></i></button>
             <div class="carousel-track" id="video-track"></div>
             <button class="carousel-next"><i class="fas fa-arrow-right"></i></button>
+            <div class="carousel-indicators" id="video-indicators"></div>
         </div>
+    </section>
+
+    <!-- Nueva Sección: Behance (Aleatoria después de "Audiovisual") -->
+    <section id="behance" class="section highlight-section">
+        <h2><i class="fab fa-behance spin-icon"></i> Mis Creaciones en Behance</h2>
+        <p class="slide-up">Explora mi portafolio profesional en Behance, donde cada proyecto refleja creatividad, precisión y pasión por el diseño.</p>
+        <a href="https://www.behance.net/manguitpublicidad" target="_blank" class="btn slide-up delay-1"><i class="fas fa-eye"></i> Ver Mis Trabajos</a>
     </section>
 
     <!-- Experiencia -->
@@ -111,69 +135,93 @@
         <p class="slide-up">No ha sido un camino recto: he enfrentado retos, aprendido de caídas y celebrado victorias. Estas experiencias me han moldeado, dándome la fuerza para liderar y crear sin límites.</p>
         <div class="accordion">
             <div class="accordion-item slide-up">
+                <button class="accordion-header">Director - Manguito Publicidad & Marketing Digital <span class="accordion-date">2020 – Presente</span></button>
+                <div class="accordion-content">
+                    <p>Hoy lidero Manguito Publicidad & Marketing Digital, una agencia con 5 años en el mercado, especializada en marketing y redes sociales. Transformamos visiones en resultados tangibles con estrategias innovadoras.</p>
+                </div>
+            </div>
+            <div class="accordion-item slide-up delay-1">
+                <button class="accordion-header">Producción Audiovisual - Petroperú, Evento Navideño <span class="accordion-date">Diciembre 2022</span></button>
+                <div class="accordion-content">
+                    <p>Produje el material audiovisual para el evento navideño de Petroperú y realicé videos de homenaje para el personal que pasa al retiro.</p>
+                </div>
+            </div>
+            <div class="accordion-item slide-up delay-2">
                 <button class="accordion-header">Creador de Contenido para Redes Sociales - Acústica EIRL <span class="accordion-date">Octubre 2020 – Agosto 2023</span></button>
                 <div class="accordion-content">
                     <p>Elevé marcas con estrategias digitales innovadoras, aumentando el engagement y optimizando su presencia online.</p>
                 </div>
             </div>
-            <div class="accordion-item slide-up delay-1">
+            <div class="accordion-item slide-up delay-3">
+                <button class="accordion-header">Fotógrafo de Eventos - Mambo Restobar <span class="accordion-date">Enero 2019 – Diciembre 2019</span></button>
+                <div class="accordion-content">
+                    <p>Capturé momentos únicos como fotógrafo de eventos para Mambo Restobar, destacando su esencia en cada imagen.</p>
+                </div>
+            </div>
+            <div class="accordion-item slide-up delay-4">
                 <button class="accordion-header">Diseñador Gráfico - Representaciones D Maruja <span class="accordion-date">Febrero 2019 – Marzo 2020</span></button>
                 <div class="accordion-content">
                     <p>Crafté piezas gráficas que capturaron audiencias y fortalecieron la identidad digital de la marca.</p>
                 </div>
             </div>
-            <div class="accordion-item slide-up delay-2">
+            <div class="accordion-item slide-up delay-5">
                 <button class="accordion-header">Desarrollador Web - I.E.P. San Ignacio de Loyola <span class="accordion-date">Abril 2015 – Diciembre 2019</span></button>
                 <div class="accordion-content">
                     <p>Construí www.siltalara.com, un sitio que combina diseño intuitivo y funcionalidad de alto impacto.</p>
                 </div>
             </div>
-            <div class="accordion-item slide-up delay-3">
+            <div class="accordion-item slide-up delay-6">
                 <button class="accordion-header">Gerente de TI - Proserfast <span class="accordion-date">Abril 2015 – Diciembre 2016</span></button>
                 <div class="accordion-content">
                     <p>Dirigí campañas publicitarias y proyectos digitales que impulsaron resultados en múltiples industrias.</p>
                 </div>
             </div>
-            <div class="accordion-item slide-up delay-4">
+            <div class="accordion-item slide-up delay-7">
                 <button class="accordion-header">Formador - I.E.P. San Ignacio de Loyola <span class="accordion-date">Marzo 2015 – Diciembre 2015</span></button>
                 <div class="accordion-content">
                     <p>Empoderé a estudiantes y profesionales con habilidades digitales y creativas de vanguardia.</p>
                 </div>
             </div>
-            <div class="accordion-item slide-up delay-5">
+            <div class="accordion-item slide-up delay-8">
                 <button class="accordion-header">Desarrollador Web - Hospedaje Olasal <span class="accordion-date">Agosto 2014 – Noviembre 2014</span></button>
                 <div class="accordion-content">
                     <p>Diseñé www.hospedajeolasal.com, priorizando usabilidad y estética para una experiencia única.</p>
                 </div>
             </div>
-            <div class="accordion-item slide-up delay-6">
+            <div class="accordion-item slide-up delay-9">
                 <button class="accordion-header">Formador - Ccacte Consulting <span class="accordion-date">Agosto 2013 – Diciembre 2014</span></button>
                 <div class="accordion-content">
                     <p>Formé equipos en estrategias digitales que transformaron su enfoque de marketing.</p>
                 </div>
             </div>
-            <div class="accordion-item slide-up delay-7">
+            <div class="accordion-item slide-up delay-10">
                 <button class="accordion-header">Formador - La Católica <span class="accordion-date">Octubre 2011 – Enero 2013</span></button>
                 <div class="accordion-content">
                     <p>Inspiré a estudiantes con técnicas creativas y tecnológicas de última generación.</p>
                 </div>
             </div>
-            <div class="accordion-item slide-up delay-8">
+            <div class="accordion-item slide-up delay-11">
                 <button class="accordion-header">Jefe de Mantenimiento - Del Nor Oeste <span class="accordion-date">Mayo 2011 – Diciembre 2011</span></button>
                 <div class="accordion-content">
                     <p>Garantice la excelencia operativa de sistemas técnicos con un enfoque proactivo.</p>
                 </div>
             </div>
-            <div class="accordion-item slide-up delay-9">
+            <div class="accordion-item slide-up delay-12">
                 <button class="accordion-header">Desarrollador Web - La Servilletita Buffets <span class="accordion-date">Mayo 2011 – Agosto 2011</span></button>
                 <div class="accordion-content">
                     <p>Creé www.laservilletitabc.com, un sitio que destacó en el competitivo mundo de eventos.</p>
                 </div>
             </div>
-            <div class="accordion-item slide-up delay-10">
+            <div class="accordion-item slide-up delay-13">
                 <button class="accordion-header">Formador - I.E.P. San Ignacio de Loyola <span class="accordion-date">Agosto 2010 – Diciembre 2010</span></button>
                 <div class="accordion-content">
                     <p>Capacité en desarrollo web y diseño, sembrando las bases para el éxito digital.</p>
+                </div>
+            </div>
+            <div class="accordion-item slide-up delay-14">
+                <button class="accordion-header">Gestión de Proyecto - Petroperú, Operaciones Talara <span class="accordion-date">Enero 2010 – Diciembre 2010</span></button>
+                <div class="accordion-content">
+                    <p>Participé en el proyecto Operaciones Talara, gestionando la actualización y cambio de equipos para optimizar procesos.</p>
                 </div>
             </div>
         </div>
@@ -205,8 +253,11 @@
         <a href="cv.pdf" download class="btn secondary slide-up delay-4"><i class="fas fa-download"></i> Descarga mi CV</a>
     </section>
 
-    <!-- Botón Flotante -->
+    <!-- Botón Flotante Contacto -->
     <a href="#contact" class="floating-btn"><i class="fas fa-comment-dots"></i></a>
+
+    <!-- Botón Subir al Cielo (Nuevo Ícono) -->
+    <a href="#hero" class="scroll-top-btn"><i class="fas fa-rocket"></i></a>
 
     <!-- Modal -->
     <div id="modal" class="modal">
